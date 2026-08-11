@@ -43,6 +43,6 @@ Tema hijo de **Astra** (`Template: astra`) que convierte la **home** de `https:/
 - Carrito: `https://qrspace.cam/carrito/`
 - Producto mensual: `https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-mes/`
 - Producto anual: `https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-anual/`
-- WhatsApp (info): `https://api.whatsapp.com/send/?phone=573117379576&text=Hola+QRSpace%2C+necesito+m%C3%A1s+informaci%C3%B3n`
+- WhatsApp (info): `https://api.whatsapp.com/send/?phone=571234567890&text=Hola+QRSpace%2C+necesito+m%C3%A1s+informaci%C3%B3n`
 - WhatsApp (demo): `https://wa.me/573117379576?text=Hola%20QRSpace%20quiero%20agendar%20una%20demostraci%C3%B3n`
 - Redes: Facebook, Instagram, LinkedIn, Telegram, YouTube (`@qrspacelab`)
