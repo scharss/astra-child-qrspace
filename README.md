@@ -1,0 +1,1 @@
+# astra-child-qrspace
