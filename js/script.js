@@ -29,7 +29,7 @@
       hero_stat_nfc: 'Validaci\u00F3n con chip',
       hero_stat3: 'Desde cualquier dispositivo',
       scan_status: 'Escaneo activo',
-      scan_text: 'Apunta la c\u00E1mara al c\u00F3digo y registra tu asistencia en segundos.',
+      scan_text: 'Apunta la c\u00E1mara al c\u00F3digo y registra la asistencia en segundos.',
 
       segments_tag: '\u00BFC\u00F3mo podemos ayudarle?',
       segments_title: 'Una soluci\u00F3n para <span class="gradient-text">cada espacio</span>',

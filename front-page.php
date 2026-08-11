@@ -151,7 +151,7 @@ $qrs_img = $qrs_url . '/assets/img';
               </div>
             </div>
 
-            <p class="hero__scan-text" data-i18n="scan_text">Apunta la cámara al código y registra tu asistencia en segundos.</p>
+            <p class="hero__scan-text" data-i18n="scan_text">Apunta la cámara al código y registra la asistencia en segundos.</p>
           </div>
         </div>
       </div>
