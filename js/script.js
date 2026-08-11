@@ -52,7 +52,7 @@
       feat3_title: 'Importaci\u00F3n masiva',
       feat3_desc: 'Importa miles de estudiantes o colaboradores en segundos desde una hoja de c\u00E1lculo.',
       feat4_title: 'QR descargables',
-      feat4_desc: 'Genera y descarga los c\u00F3digos QR en lote para carnetts f\u00EDsicos o pantallas de celular.',
+      feat4_desc: 'Genera y descarga los c\u00F3digos QR en lote para carnets f\u00EDsicos o pantallas de celular.',
       feat5_title: 'Reportes en Excel',
       feat5_desc: 'Detecta ausencias autom\u00E1ticamente y exporta reportes completos de asistencia a Excel.',
       feat6_title: 'Multi-dispositivo',

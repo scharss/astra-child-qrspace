@@ -235,7 +235,7 @@ $qrs_img = $qrs_url . '/assets/img';
           <div class="feature-card reveal">
             <div class="feature-card__icon"><i class="fa-solid fa-id-card"></i></div>
             <h3 data-i18n="feat4_title">QR descargables</h3>
-            <p data-i18n="feat4_desc">Genera y descarga los códigos QR en lote para carnetts físicos o pantallas de celular.</p>
+            <p data-i18n="feat4_desc">Genera y descarga los códigos QR en lote para carnets físicos o pantallas de celular.</p>
           </div>
 
           <div class="feature-card reveal">
