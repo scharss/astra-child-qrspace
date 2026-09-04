@@ -312,7 +312,7 @@ $qrs_img = $qrs_url . '/assets/img';
             <span class="price-card__badge" data-i18n="price_best">Mejor valor</span>
             <div class="price-card__period" data-i18n="price_annual">Anual</div>
             <div class="price-card__name">QRSpace</div>
-            <div class="price-card__amount">$470 <span data-i18n="price_annual_suffix">USD/AÑO</span></div>
+            <div class="price-card__amount">$350 <span data-i18n="price_annual_suffix">USD/AÑO</span></div>
             <p class="price-card__text" data-i18n="price_desc">Software de Control de Asistencia + Tutorial de Administración + Soporte.</p>
             <span class="price-card__note" data-i18n="price_note">No se hacen cobros automáticos.</span>
             <a href="https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-anual/" class="btn btn--primary btn--lg" target="_blank" rel="noopener" data-i18n="buy_now">Comprar ahora</a>

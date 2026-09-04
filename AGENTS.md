@@ -19,12 +19,12 @@ Este documento describe cómo está montado el sitio y las reglas para editarlo 
 
 ## Convenciones al editar
 
-- **Los cambios de la landing se aplican en ambos lados**:
-  - `web site/index.html` (versión estática local de la landing).
-  - `web site/wp-upload/astra-child/front-page.php` (versión WordPress).
-  - Si se toca texto/i18n, actualizar `js/script.js` en **ambas** copias:
-    - `web site/js/script.js`
-    - `web site/wp-upload/astra-child/js/script.js`
+- **Este repo es la fuente de verdad** (GitHub `scharss/astra-child-qrspace`). Los archivos del tema se editan en la **raíz de este repo**: `front-page.php`, `functions.php`, `js/script.js`, `css/style.css`, `assets/`. El `style.css` del child solo lleva la cabecera del tema.
+- **Las copias de la landing se espejan a mano** en la carpeta de trabajo local `QR SPACE\PAGINA WEB\web site\` (fuera de este repo). Tras cada cambio hay que propagarlo ahí, en ambas versiones:
+  - **Estática de la landing**: `index.html`, `js/script.js`, `css/style.css`, `assets/`.
+  - **Versión WordPress** (la que se sube al servidor): `wp-upload/astra-child/front-page.php`, `.../functions.php`, `.../js/script.js`, `.../css/style.css`, `.../assets/`.
+  - Si se toca texto/i18n, actualizar `js/script.js` en la raíz y en esas dos copias.
+- **Clones duplicados (no editar)**: dentro de `web site\wp-upload\` existen clones antiguos de este mismo repo (`github\astra-child-qrspace`, `github2\astra-child-qrspace`). Son sobra de disco y candidatos a borrar; nunca editar ahí.
 - **i18n**: los textos usan `data-i18n="clave"` y se rellenan desde `translations` en `script.js` (idiomas `es` y `en`, persistencia con `localStorage('qrspace-lang')`, default `es`). Al cambiar un texto, actualizar la clave ES y su equivalente EN.
 - **Enlaces**: todos los enlaces externos apuntan a `qrspace.cam` (rutas absolutas) o a los WhatsApp/redes de QRSpace. No cambiarlos salvo que se pida.
 - **Idioma de archivos nuevos**: en español (proyecto en español).

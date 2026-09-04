@@ -12,6 +12,15 @@ Tema hijo de **Astra** (`Template: astra`) que convierte la **home** de `https:/
 | `css/style.css` | Estilos de la landing: dark-mode, glassmorphism, acento violeta, responsive mobile-first. |
 | `js/script.js` | i18n ES/EN (persistencia en `localStorage` con clave `qrspace-lang`, default `es`), menú móvil, reveal on scroll, sombra del navbar y pulso del botón WhatsApp. |
 | `assets/img/` | Imágenes de la landing (QR, logos, casos de éxito, screenshots). |
+| `AGENTS.md` | Guía de edición para humanos e IA: reglas críticas, convenciones, verificación y despliegue. |
+| `README.md` | Este documento. |
+
+## Fuente de verdad y copias locales
+
+- **Este repo (GitHub `scharss/astra-child-qrspace`) es la fuente canónica del tema.** Todo cambio se hace en la raíz del repo y se propaga a mano a la carpeta de trabajo local `QR SPACE\PAGINA WEB\web site\`:
+  - `index.html` + `js/` + `css/` + `assets/` → versión estática de la landing.
+  - `wp-upload\astra-child\` → versión WordPress que se sube al servidor.
+- **No editar** los clones antiguos del propio repo que viven en `web site\wp-upload\github\astra-child-qrspace` y `web site\wp-upload\github2\astra-child-qrspace`: son sobra de disco, candidatos a borrar.
 
 ## Arquitectura clave
 
@@ -23,7 +32,7 @@ Tema hijo de **Astra** (`Template: astra`) que convierte la **home** de `https:/
 ## Contenido de la landing
 
 - Hero con código QR animado (láser violeta) + feed de escaneos en vivo + stats (QR+GPS, QR+NFC, 24/7).
-- Secciones: "Una solución para cada espacio" (Empresas / Centros Educativos / Eventos), "¿Por qué QRSpace?" (features), "Resultados reales" (casos de éxito), planes de precio ($47 USD/MES y $470 USD/AÑO), banner "Recursos y guías" (blog), CTA WhatsApp y footer con redes sociales.
+- Secciones: "Una solución para cada espacio" (Empresas / Centros Educativos / Eventos), "¿Por qué QRSpace?" (features), "Resultados reales" (casos de éxito), planes de precio ($47 USD/MES y $350 USD/AÑO), banner "Recursos y guías" (blog), CTA WhatsApp y footer con redes sociales.
 - i18n: elementos con `data-i18n="clave"` se rellenan desde `js/script.js` (traducciones ES y EN).
 
 ## Instalación / despliegue
