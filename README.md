@@ -1,6 +1,6 @@
 # Astra Child — QRSpace
 
-An **Astra** child theme (`Template: astra`) that transforms the homepage of `https://qrspace.cam` into the QRSpace dark-mode landing page, without affecting the rest of the site (blog, products, cart, checkout, my account), which continues to use WordPress + WooCommerce with Astra styles.
+An child theme (`Template: astra`) that transforms the homepage of `https://qrspace.cam` into the QRSpace dark-mode landing page, without affecting the rest of the site (blog, products, cart, checkout, my account), which continues to use WordPress + WooCommerce with Astra styles.
 
 ## File Structure
 
