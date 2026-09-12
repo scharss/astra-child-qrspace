@@ -1,55 +1,55 @@
 # Astra Child — QRSpace
 
-Tema hijo de **Astra** (`Template: astra`) que convierte la **home** de `https://qrspace.cam` en la landing dark-mode de QRSpace, sin afectar el resto del sitio (blog, productos, carrito, checkout, mi cuenta) que sigue usando WordPress + WooCommerce con los estilos de Astra.
+An **Astra** child theme (`Template: astra`) that transforms the homepage of `https://qrspace.cam` into the QRSpace dark-mode landing page, without affecting the rest of the site (blog, products, cart, checkout, my account), which continues to use WordPress + WooCommerce with Astra styles.
 
-## Estructura de archivos
+## File Structure
 
-| Archivo | Propósito |
+| File | Purpose |
 |---|---|
-| `style.css` | Cabecera del tema hijo (nombre, autor, `Template: astra`). No contiene reglas de estilo. |
-| `functions.php` | Lógica de aislamiento: encola el JS de la landing solo en la portada y descarga los estilos/scripts de Astra únicamente en la home. |
-| `front-page.php` | Template full-page de la landing. Imprime el HTML completo de la portada, llama `wp_head()`/`wp_footer()`, y carga el CSS de la landing al final del `<head>` con estilos base `!important`. |
-| `css/style.css` | Estilos de la landing: dark-mode, glassmorphism, acento violeta, responsive mobile-first. |
-| `js/script.js` | i18n ES/EN (persistencia en `localStorage` con clave `qrspace-lang`, default `es`), menú móvil, reveal on scroll, sombra del navbar y pulso del botón WhatsApp. |
-| `assets/img/` | Imágenes de la landing (QR, logos, casos de éxito, screenshots). |
-| `AGENTS.md` | Guía de edición para humanos e IA: reglas críticas, convenciones, verificación y despliegue. |
-| `README.md` | Este documento. |
+| `style.css` | Child theme header (name, author, `Template: astra`). Contains no style rules. |
+| `functions.php` | Isolation logic: enqueues the landing JS only on the front page and unloads Astra styles/scripts solely on the home page. |
+| `front-page.php` | Full-page landing template. Outputs the complete homepage HTML, calls `wp_head()`/`wp_footer()`, and loads the landing CSS at the end of the `<head>` with base `!important` styles. |
+| `css/style.css` | Landing styles: dark-mode, glassmorphism, violet accent, mobile-first responsive. |
+| `js/script.js` | ES/EN i18n (`localStorage` persistence with key `qrspace-lang`, default `es`), mobile menu, scroll reveal, navbar shadow, and WhatsApp button pulse. |
+| `assets/img/` | Landing images (QR codes, logos, success stories, screenshots). |
+| `AGENTS.md` | Editing guide for humans and AI: critical rules, conventions, verification, and deployment. |
+| `README.md` | This document. |
 
-## Fuente de verdad y copias locales
+## Source of Truth and Local Copies
 
-- **Este repo (GitHub `scharss/astra-child-qrspace`) es la fuente canónica del tema.** Todo cambio se hace en la raíz del repo y se propaga a mano a la carpeta de trabajo local `QR SPACE\PAGINA WEB\web site\`:
-  - `index.html` + `js/` + `css/` + `assets/` → versión estática de la landing.
-  - `wp-upload\astra-child\` → versión WordPress que se sube al servidor.
-- **No editar** los clones antiguos del propio repo que viven en `web site\wp-upload\github\astra-child-qrspace` y `web site\wp-upload\github2\astra-child-qrspace`: son sobra de disco, candidatos a borrar.
+- **This repo (GitHub `scharss/astra-child-qrspace`) is the canonical source of the theme.** All changes are made in the repo root and manually propagated to the local working folder `QR SPACE\PAGINA WEB\web site\`:
+  - `index.html` + `js/` + `css/` + `assets/` → Static version of the landing page.
+  - `wp-upload\astra-child\` → WordPress version uploaded to the server.
+- **Do not edit** older clones of this repo located at `web site\wp-upload\github\astra-child-qrspace` and `web site\wp-upload\github2\astra-child-qrspace`: these are disk clutter and candidates for deletion.
 
-## Arquitectura clave
+## Key Architecture
 
-- **Aislamiento por página**: la landing usa `front-page.php`, que WordPress emplea automáticamente para la portada. La condición `is_front_page()` en `functions.php` garantiza que el JS de la landing y el descargo de estilos de Astra **solo** apliquen en la home.
-- **Fuera de la home**: blog, productos, carrito, checkout y mi cuenta cargan Astra normalmente; los estilos de la landing no se filtran a esas páginas.
-- **Barra de administración**: se conserva (los estilos `admin-bar`/`dashicons` de core no se tocan) → visible al estar logueado.
-- **CSS gana en la home**: en `front-page.php`, `css/style.css` se imprime **después** de `wp_head()`, y un `<style>` corto fuerza los colores base (`background:#0a0a0f`, `color:#e8e8f0`, `margin:0`) con `!important`.
+- **Per-page isolation**: The landing uses `front-page.php`, which WordPress automatically assigns to the homepage. The `is_front_page()` condition in `functions.php` ensures that the landing JS and Astra style unloading apply **only** to the home page.
+- **Outside the home page**: The blog, products, cart, checkout, and my account pages load Astra normally; landing styles do not leak into those pages.
+- **Admin bar**: Preserved (core `admin-bar`/`dashicons` styles are untouched) → visible when logged in.
+- **CSS precedence on home**: In `front-page.php`, `css/style.css` is output **after** `wp_head()`, and a short `<style>` tag forces base colors (`background:#0a0a0f`, `color:#e8e8f0`, `margin:0`) with `!important`.
 
-## Contenido de la landing
+## Landing Page Content
 
-- Hero con código QR animado (láser violeta) + feed de escaneos en vivo + stats (QR+GPS, QR+NFC, 24/7).
-- Secciones: "Una solución para cada espacio" (Empresas / Centros Educativos / Eventos), "¿Por qué QRSpace?" (features), "Resultados reales" (casos de éxito), planes de precio ($47 USD/MES y $350 USD/AÑO), banner "Recursos y guías" (blog), CTA WhatsApp y footer con redes sociales.
-- i18n: elementos con `data-i18n="clave"` se rellenan desde `js/script.js` (traducciones ES y EN).
+- Hero section with animated QR code (violet laser) + live scan feed + stats (QR+GPS, QR+NFC, 24/7).
+- Sections: "A solution for every space" (Businesses / Educational Centers / Events), "Why QRSpace?" (features), "Real results" (success stories), pricing plans ($47 USD/MONTH and $350 USD/YEAR), "Resources and guides" banner (blog), WhatsApp CTA, and footer with social media links.
+- i18n: Elements with `data-i18n="key"` are populated via `js/script.js` (ES and EN translations).
 
-## Instalación / despliegue
+## Installation / Deployment
 
-1. Subir la carpeta `astra-child` completa a `public_html/wp-content/themes/` (o instalar `astra-child.zip` desde Apariencia → Temas → Añadir nuevo → Subir tema).
-2. Activar **"Astra Child"** en Apariencia → Temas.
-3. Al editar la landing, re-subir `front-page.php` y `js/script.js` (y `css/style.css` si cambió) a la misma carpeta y recargar con **Ctrl+F5**.
-4. **No reemplazar** `index.php`, `.htaccess` ni `wp-config.php`: el tema se integra como child theme, el motor de WordPress queda intacto.
+1. Upload the entire `astra-child` folder to `public_html/wp-content/themes/` (or install `astra-child.zip` via Appearance → Themes → Add New → Upload Theme).
+2. Activate **"Astra Child"** under Appearance → Themes.
+3. When editing the landing page, re-upload `front-page.php` and `js/script.js` (plus `css/style.css` if modified) to the same folder and hard-refresh using **Ctrl+F5**.
+4. **Do not replace** `index.php`, `.htaccess`, or `wp-config.php`: the theme integrates as a child theme, leaving the WordPress core engine intact.
 
-## Enlaces de referencia
+## Reference Links
 
-- Sitio: `https://qrspace.cam`
+- Website: `https://qrspace.cam`
 - Demo: `https://qrspace.cam/demo/`
-- Precios: `https://qrspace.cam/precio/`
+- Pricing: `https://qrspace.cam/precio/`
 - Blog: `https://qrspace.cam/blog/`
-- Mi cuenta (Login): `https://qrspace.cam/mi-cuenta/`
-- Carrito: `https://qrspace.cam/carrito/`
-- Producto mensual: `https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-mes/`
-- Producto anual: `https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-anual/`
-- Redes: Facebook, Instagram, LinkedIn, Telegram, YouTube (`@qrspacelab`)
+- My Account (Login): `https://qrspace.cam/mi-cuenta/`
+- Cart: `https://qrspace.cam/carrito/`
+- Monthly Product: `https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-mes/`
+- Annual Product: `https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-anual/`
+- Social Media: Facebook, Instagram, LinkedIn, Telegram, YouTube (`@qrspacelab`)
