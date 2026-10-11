@@ -7,6 +7,12 @@
  */
 $qrs_url = get_stylesheet_directory_uri();
 $qrs_img = $qrs_url . '/assets/img';
+
+/* Precios configurables (menú QRSpace en wp-admin), convertidos a la moneda de visualización. */
+$qrs_prices = array(
+	'monthly' => function_exists( 'qrspace_get_price' ) ? qrspace_get_price( 'monthly' ) : array( 'display' => '$47', 'currency' => 'USD' ),
+	'annual'  => function_exists( 'qrspace_get_price' ) ? qrspace_get_price( 'annual' ) : array( 'display' => '$350', 'currency' => 'USD' ),
+);
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -29,11 +35,14 @@ $qrs_img = $qrs_url . '/assets/img';
   <!-- Landing QRSpace: se carga al final para ganar a cualquier estilo del tema -->
   <link rel="stylesheet" href="<?php echo esc_url( $qrs_url ); ?>/css/style.css">
   <style>
-    html, body { background-color: #0a0a0f !important; color: #e8e8f0 !important; margin: 0 !important; }
-    body { overflow-x: hidden; }
+    html { background-color: #0a0a0f !important; }
+    body { background-color: transparent !important; color: #e8e8f0 !important; margin: 0 !important; overflow-x: hidden; }
+    #qrspace-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
   </style>
 </head>
 <body <?php body_class(); ?>>
+
+  <canvas id="qrspace-bg" aria-hidden="true" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none"></canvas>
 
   <!-- ============================= -->
   <!-- NAVBAR (Sticky)               -->
@@ -302,7 +311,7 @@ $qrs_img = $qrs_url . '/assets/img';
           <article class="price-card reveal">
             <div class="price-card__period" data-i18n="price_monthly">Mensual</div>
             <div class="price-card__name">QRSpace</div>
-            <div class="price-card__amount">$47 <span data-i18n="price_monthly_suffix">USD/MES</span></div>
+            <div class="price-card__amount"><?php echo esc_html( $qrs_prices['monthly']['display'] ); ?> <span><?php echo esc_html( $qrs_prices['monthly']['currency'] ); ?></span><span data-i18n="price_monthly_suffix">/MES</span></div>
             <p class="price-card__text" data-i18n="price_desc">Software de Control de Asistencia + Tutorial de Administración + Soporte.</p>
             <span class="price-card__note" data-i18n="price_note">No se hacen cobros automáticos.</span>
             <a href="https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-mes/" class="btn btn--outline btn--lg" target="_blank" rel="noopener" data-i18n="buy_now">Comprar ahora</a>
@@ -312,7 +321,7 @@ $qrs_img = $qrs_url . '/assets/img';
             <span class="price-card__badge" data-i18n="price_best">Mejor valor</span>
             <div class="price-card__period" data-i18n="price_annual">Anual</div>
             <div class="price-card__name">QRSpace</div>
-            <div class="price-card__amount">$350 <span data-i18n="price_annual_suffix">USD/AÑO</span></div>
+            <div class="price-card__amount"><?php echo esc_html( $qrs_prices['annual']['display'] ); ?> <span><?php echo esc_html( $qrs_prices['annual']['currency'] ); ?></span><span data-i18n="price_annual_suffix">/AÑO</span></div>
             <p class="price-card__text" data-i18n="price_desc">Software de Control de Asistencia + Tutorial de Administración + Soporte.</p>
             <span class="price-card__note" data-i18n="price_note">No se hacen cobros automáticos.</span>
             <a href="https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-anual/" class="btn btn--primary btn--lg" target="_blank" rel="noopener" data-i18n="buy_now">Comprar ahora</a>

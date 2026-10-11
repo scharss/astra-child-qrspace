@@ -7,6 +7,7 @@ Este documento describe cómo está montado el sitio y las reglas para editarlo 
 - **Stack**: WordPress en `https://qrspace.cam`, tema padre **Astra**, **WooCommerce** (venta de suscripciones) y plugin de consentimiento **Complianz**.
 - **`astra-child/`** es un tema hijo de Astra (`Template: astra`). Su único propósito es mostrar la landing dark-mode de QRSpace **solo en la home** mediante `front-page.php`.
 - El resto del sitio (blog, productos, carrito, checkout, mi cuenta) sigue usando WordPress/WooCommerce con los estilos de Astra.
+- **Configuración de precios**: `inc/qrspace-pricing.php` (incluido desde `functions.php`) añade un menú **QRSpace** en la **barra lateral de wp-admin** para configurar el **precio mensual** y **anual** (importe + moneda) y la **moneda de visualización**, con conversión por tasas (Yahoo + respaldo er-api, caché, tasa manual). Se guarda en la opción `qrspace_pricing` y **solo** afecta a la sección `#pricing` de la portada. Es **independiente** del plugin VizorCoin: no comparte clases, opciones ni código. No tocar navbar, otras secciones, productos ni checkout.
 
 ## Reglas críticas (no romper)
 
@@ -16,6 +17,7 @@ Este documento describe cómo está montado el sitio y las reglas para editarlo 
 4. **CSS de la landing carga al final del `<head>`.** En `front-page.php` el `<link>` de `css/style.css` se imprime DESPUÉS de `wp_head()`, más un `<style>` con colores base `!important`. Mantener ese orden: es lo que hace que la landing gane sobre el CSS del tema.
 5. **`style.css` del child NO lleva reglas de estilo.** Solo la cabecera del tema. Toda la estética va en `css/style.css`.
 6. **El botón "Gestionar consentimiento" de Complianz** se oculta con CSS adicional del Customizer (`.cmplz-btn.cmplz-manage-consent { display: none !important; }`). No es parte de este tema.
+7. **Fondo animado (partículas).** `js/background.js` pinta el canvas global `#qrspace-bg` **solo en la home** (encolado con `is_front_page()`). En `front-page.php` el `body` debe quedar `background-color: transparent !important` (con `html` oscuro): si se pone opaco, tapa el canvas que va a `z-index:-1`. No cargar ese script fuera de la portada.
 
 ## Convenciones al editar
 
@@ -36,7 +38,9 @@ Ejecutar antes de dar un cambio por bueno:
 ```bash
 php -l front-page.php
 php -l functions.php
+php -l inc/qrspace-pricing.php
 node --check js/script.js
+node --check js/background.js
 ```
 
 Y confirmar que no quedan restos de textos viejos (`rg "texto viejo" .`).

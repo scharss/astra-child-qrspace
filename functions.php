@@ -13,6 +13,15 @@ function qrspace_landing_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'qrspace_landing_enqueue_assets', 20 );
 
+/* Fondo animado global (canvas de partículas): SOLO en la portada. */
+function qrspace_background_enqueue() {
+	if ( ! is_front_page() ) {
+		return;
+	}
+	wp_enqueue_script( 'qrspace-background', get_stylesheet_directory_uri() . '/js/background.js', array(), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'qrspace_background_enqueue', 21 );
+
 /* Quitar estilos y scripts de Astra: SOLO en la portada. */
 function qrspace_strip_astra_on_front() {
 	if ( ! is_front_page() ) {
@@ -46,3 +55,6 @@ function qrspace_strip_astra_on_front() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'qrspace_strip_astra_on_front', 100 );
+
+/* Configuración de precios (Mensual/Anual) + conversión de moneda. */
+require_once get_stylesheet_directory() . '/inc/qrspace-pricing.php';

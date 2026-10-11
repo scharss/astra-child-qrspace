@@ -7,10 +7,12 @@ An child theme that transforms the homepage of `https://qrspace.cam` into the QR
 | File | Purpose |
 |---|---|
 | `style.css` | Child theme header (name, author, `Template: astra`). Contains no style rules. |
-| `functions.php` | Isolation logic: enqueues the landing JS only on the front page and unloads Astra styles/scripts solely on the home page. |
+| `functions.php` | Isolation logic: enqueues the landing JS only on the front page and unloads Astra styles/scripts solely on the home page. Also includes `inc/qrspace-pricing.php`. |
+| `inc/qrspace-pricing.php` | Admin **QRSpace** menu + settings (monthly/annual amount + currency, display currency, rate source, cache, manual rate) and currency conversion (Yahoo + er-api fallback, cached). Independent of any external currency plugin. |
 | `front-page.php` | Full-page landing template. Outputs the complete homepage HTML, calls `wp_head()`/`wp_footer()`, and loads the landing CSS at the end of the `<head>` with base `!important` styles. |
 | `css/style.css` | Landing styles: dark-mode, glassmorphism, violet accent, mobile-first responsive. |
 | `js/script.js` | ES/EN i18n (`localStorage` persistence with key `qrspace-lang`, default `es`), mobile menu, scroll reveal, navbar shadow, and WhatsApp button pulse. |
+| `js/background.js` | Global animated particle-network background (vanilla canvas). Enqueued only on the home page. |
 | `assets/img/` | Landing images (QR codes, logos, success stories, screenshots). |
 | `AGENTS.md` | Editing guide for humans and AI: critical rules, conventions, verification, and deployment. |
 | `README.md` | This document. |
@@ -29,10 +31,21 @@ An child theme that transforms the homepage of `https://qrspace.cam` into the QR
 - **Admin bar**: Preserved (core `admin-bar`/`dashicons` styles are untouched) → visible when logged in.
 - **CSS precedence on home**: In `front-page.php`, `css/style.css` is output **after** `wp_head()`, and a short `<style>` tag forces base colors (`background:#0a0a0f`, `color:#e8e8f0`, `margin:0`) with `!important`.
 
+## Pricing configuration (admin)
+
+The theme adds a **QRSpace** item to the wp-admin sidebar with a settings page:
+
+- **Monthly price** and **Annual price**: each with its own amount and currency (COP or any).
+- **Display currency**: the currency shown on the landing (default USD).
+- **Rate source** (Auto = Yahoo + er-api fallback), **cache (minutes)** and an optional **manual rate**.
+- "Refresh rate now" button and last-rate status.
+
+The configuration is stored in the `qrspace_pricing` option and is converted at render time in the landing `#pricing` section. Conversion is **display-only** and independent of the VizorCoin plugin. Outside the home page nothing changes.
+
 ## Landing Page Content
 
 - Hero section with animated QR code (violet laser) + live scan feed + stats (QR+GPS, QR+NFC, 24/7).
-- Sections: "A solution for every space" (Businesses / Educational Centers / Events), "Why QRSpace?" (features), "Real results" (success stories), pricing plans ($47 USD/MONTH and $350 USD/YEAR), "Resources and guides" banner (blog), WhatsApp CTA, and footer with social media links.
+- Sections: "A solution for every space" (Businesses / Educational Centers / Events), "Why QRSpace?" (features), "Real results" (success stories), pricing plans (monthly/annual, configurable in the QRSpace admin menu and converted to the display currency), "Resources and guides" banner (blog), WhatsApp CTA, and footer with social media links.
 - i18n: Elements with `data-i18n="key"` are populated via `js/script.js` (ES and EN translations).
 
 ## Installation / Deployment
