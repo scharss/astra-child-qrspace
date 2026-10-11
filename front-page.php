@@ -311,7 +311,7 @@ $qrs_prices = array(
           <article class="price-card reveal">
             <div class="price-card__period" data-i18n="price_monthly">Mensual</div>
             <div class="price-card__name">QRSpace</div>
-            <div class="price-card__amount"><?php echo esc_html( $qrs_prices['monthly']['display'] ); ?> <span><?php echo esc_html( $qrs_prices['monthly']['currency'] ); ?></span><span data-i18n="price_monthly_suffix">/MES</span></div>
+            <div class="price-card__amount"><?php echo esc_html( $qrs_prices['monthly']['display'] ); ?> <span><?php echo esc_html( $qrs_prices['monthly']['currency'] ); ?></span><span data-i18n="price_period_monthly">/MES</span></div>
             <p class="price-card__text" data-i18n="price_desc">Software de Control de Asistencia + Tutorial de Administración + Soporte.</p>
             <span class="price-card__note" data-i18n="price_note">No se hacen cobros automáticos.</span>
             <a href="https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-mes/" class="btn btn--outline btn--lg" target="_blank" rel="noopener" data-i18n="buy_now">Comprar ahora</a>
@@ -321,7 +321,7 @@ $qrs_prices = array(
             <span class="price-card__badge" data-i18n="price_best">Mejor valor</span>
             <div class="price-card__period" data-i18n="price_annual">Anual</div>
             <div class="price-card__name">QRSpace</div>
-            <div class="price-card__amount"><?php echo esc_html( $qrs_prices['annual']['display'] ); ?> <span><?php echo esc_html( $qrs_prices['annual']['currency'] ); ?></span><span data-i18n="price_annual_suffix">/AÑO</span></div>
+            <div class="price-card__amount"><?php echo esc_html( $qrs_prices['annual']['display'] ); ?> <span><?php echo esc_html( $qrs_prices['annual']['currency'] ); ?></span><span data-i18n="price_period_annual">/AÑO</span></div>
             <p class="price-card__text" data-i18n="price_desc">Software de Control de Asistencia + Tutorial de Administración + Soporte.</p>
             <span class="price-card__note" data-i18n="price_note">No se hacen cobros automáticos.</span>
             <a href="https://qrspace.cam/producto/qrspace-software-de-control-de-asistencia-anual/" class="btn btn--primary btn--lg" target="_blank" rel="noopener" data-i18n="buy_now">Comprar ahora</a>
